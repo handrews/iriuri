@@ -1,0 +1,23 @@
+namestring    = assigned-name
+                [ rq-components ]
+                [ "#" f-component ]
+assigned-name = "urn" ":" NID ":" NSS
+NID           = (alphanum) 0*30(ldh) (alphanum)
+ldh           = alphanum / "-"
+NSS           = pchar *(pchar / "/")
+rq-components = [ "?+" r-component ]
+                [ "?=" q-component ]
+r-component   = pchar *( pchar / "/" / "?" )
+q-component   = pchar *( pchar / "/" / "?" )
+f-component   = fragment
+
+pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
+fragment      = *( pchar / "/" / "?" )
+pct-encoded   = "%" HEXDIG HEXDIG
+unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
+              / "*" / "+" / "," / ";" / "="
+    ; from RFC 3986
+
+alphanum      = ALPHA / DIGIT
+    ; from RFC 2396 translated per RFC 3986 Appendix D.2
