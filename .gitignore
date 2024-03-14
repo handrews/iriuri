@@ -1,5 +1,6 @@
 .venv
 __pycache__
+/dist
 
 # A local place to stash ideas
 /notes
