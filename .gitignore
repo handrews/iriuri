@@ -2,5 +2,9 @@
 __pycache__
 /dist
 
+# Test infrastructure
+.coverage
+.tox/
+
 # A local place to stash ideas
 /notes
