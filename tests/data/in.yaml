@@ -1,0 +1,62 @@
+rfc3986:
+- "s://u:w@a.b:1/p/o?q=r&s=t&q=z#f"
+- "s:///?#"
+
+rfc3987:
+# CJK
+- "https://www.例如.中国/api/中国/endpoint?例=如#如"
+# Bi-directional
+- "http://اب.تث.جح/خد/ذر/زس?شص=ضط;ظع=غف#قك"
+
+rfc2397:
+- "data:,A%20brief%20note"
+- "data:image/gif;base64,R0lGODdhMAAwAPAAAAAAAP///ywAAAAAMAAwAAAC8IyPqcvt3wCcDkiLc7C0qwyGHhSWpjQu5yqmCYsapyuvUUlvONmOZtfzgFzByTB10QgxOR0TqBQejhRNzOfkVJ+5YiUqrXF5Y5lKh/DeuNcP5yLWGsEbtLiOSpa/TPg7JpJHxyendzWTBfX0cxOnKPjgBzi4diinWGdkF8kjdfnycQZXZeYGejmJlZeGl9i2icVqaNVailT6F5iJ90m6mvuTS4OK05M0vDk0Q4XUtwvKOzrcd3iq9uisF81M1OIcR7lEewwcLp7tuNNkM3uNna3F2JQFo97Vriy/Xl4/f1cf5VWzXyym7PHhhx4dbgYKAAA7"
+- "data:application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local"
+
+rfc4151:
+- "tag:handrews@modern-json-schema.com,2023-01-01:test"
+- "tag:example.com,2023:/foo/bar?a=b&y=z#qux"
+
+rfc4993:
+- "iris.lwz:dreg1//192.0.2.1:44/domain/example.com"
+
+rfc6694:
+- "about:blank"
+- "about:?xyz#abc"
+
+rfc8141:
+- "urn:ns:ss?+a:b=c?=d=e&f=g#f"
+- "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+- "urn:example:a123,Z456#somepart"
+- "urn:example:1/406/47452/2"
+- "urn:example:foo-bar-baz-qux?+CCResolve:cc=uk"
+- "urn:example:weather?=op=map&lat=39.56&lon=-104.85&datetime=1969-07-21T02:56:15Z"
+
+rfc8089:
+- "file:///foo"
+- "file:/foo"
+
+rfc8589:
+- "leaptofrogans:%E7%BD%91%E7%BB%9C%E5%90%8D*%E7%AB%99%E5%90%8D"
+- "leaptofrogans:网络名*站名"
+
+rfc9110:
+- "https://weatherapp.example?op=map&lat=39.56&lon=-104.85&datetime=1969-07-21T02:56:15Z"
+
+# See also https://html.spec.whatwg.org/#evaluate-a-javascript:-url
+# but, as a WHATWG spec, it does not define the syntax directly.
+draft-hoehrmann-javascript-scheme:
+- "javascript:doSomething()"
+
+# https://magnet-uri.sourceforge.net/
+magnet:
+- "magnet:?xt=urn:btih:c12fe1c06bba254a9dc9f519b335aa7c1367a88a&tr=http%3A%2F%2Fexample.org%2Fannounce"
+
+# https://learn.microsoft.com/en-us/windows/uwp/launch-resume/launch-maps-app
+microsoft-maps:
+- "bingmaps:?bb=39.719_-74.52~41.71_-73.5&cp=47~-122"
+- "ms-drive-to:?destination.latitude=47.680504&destination.longitude=-122.328262&destination.name=Green+Lake"
+
+obsidian:
+- "obsidian://open?vault=my%20vault"
+- "obsidian://vault/my%20vault/my%20note"
