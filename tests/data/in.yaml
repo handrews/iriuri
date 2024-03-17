@@ -6,7 +6,34 @@ rfc3987:
 # CJK
 - "https://www.例如.中国/api/中国/endpoint?例=如#如"
 # Bi-directional
+# https://www.w3.org/International/iri-edit/BidiExamples
+- "http://ab.גדהוזח.ij/kl/mn/op.html"
+- "http://ab.تثجحخد.ij/kl/mn/op.html"
+- "http://ab.تثج.حخد/ij/kl/mn/op.html"
+- "http://ab.גדה.וזח/ij/kl/mn/op.html"
+- "http://אב.גד.הו/זח/טי/כל?מן=סע;פץ=קר#שת"
 - "http://اب.تث.جح/خد/ذر/زس?شص=ضط;ظع=غف#قك"
+- "http://اب.تث.ef/gh/ذر/زس.html"
+- "http://אב.גד.ef/gh/טי/כל.html"
+- "http://ab.cd.הו/זח/ij/kl.html"
+- "http://ab.cd.جح/خد/ij/kl.html"
+- "http://ab.تث.جح/خد/ذر/kl.html"
+- "http://ab.גד.הו/זח/טי/kl.html"
+- "http://ab.גדה123וזח.ij/kl/mn/op.html"
+- "http://ab.تثج123حخد.ij/kl/mn/op.html"
+# Allowed but not recommended!
+- "http://ab.تثجحخد.123/kl/mn/op.html"
+- "http://ab.גדהוזח.123/kl/mn/op.html"
+- "http://ab.גדהוזח.123ij/kl/mn/op.html"
+- "http://ab.تثجحخد.123ij/kl/mn/op.html"
+
+errors:
+  rfc3987:
+  # https://www.w3.org/International/iri-edit/BidiExamples
+  - "http://ab.cd.ef/خد1/2ذر/زس.html"
+  - "http://ab.cd.ef/זח1/2טי/כל.html"
+  - "http://ab.cd.ef/זח%31/%32טי/כל.html"
+  - "http://ab.cd.ef/خد%31/%32ذر/زس.html"
 
 rfc2397:
 - "data:,A%20brief%20note"

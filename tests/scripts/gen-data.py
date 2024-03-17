@@ -55,30 +55,40 @@ def main():
     iri_tests_out = defaultdict(dict)
     iri_ref_tests_out = defaultdict(dict)
 
-    ignore = frozenset() # RULES_TO_IGNORE
     for spec in data_in:
+        if spec == 'errors':
+          # These will probably move to a separate file anyway
+          continue
         for iri in data_in[spec]:
             if iri.isascii():
                 uri_tests_out[iri] = node_to_dict(
                     rule_uri.parse_all(iri),
-                    ignore,
+                    RULES_TO_IGNORE,
                 )
                 uri_ref_tests_out[iri] = node_to_dict(
                     rule_uri_ref.parse_all(iri),
-                    ignore,
+                    RULES_TO_IGNORE,
                 )
             iri_tests_out[iri] = node_to_dict(
                 rule_iri.parse_all(iri),
-                ignore,
+                RULES_TO_IGNORE,
             )
             iri_ref_tests_out[iri] = node_to_dict(
                 rule_iri_ref.parse_all(iri),
-                ignore,
+                RULES_TO_IGNORE,
             )
-    URI_TESTS_OUT.write_text(json.dumps(uri_tests_out, indent=2), encoding='utf-8')
-    URI_REF_TESTS_OUT.write_text(json.dumps(uri_ref_tests_out, indent=2), encoding='utf-8')
-    IRI_TESTS_OUT.write_text(json.dumps(iri_tests_out, indent=2), encoding='utf-8')
-    IRI_REF_TESTS_OUT.write_text(json.dumps(iri_ref_tests_out, indent=2), encoding='utf-8')
+    URI_TESTS_OUT.write_text(
+        json.dumps(uri_tests_out, indent=2), encoding='utf-8',
+    )
+    URI_REF_TESTS_OUT.write_text(
+        json.dumps(uri_ref_tests_out, indent=2), encoding='utf-8',
+    )
+    IRI_TESTS_OUT.write_text(
+        json.dumps(iri_tests_out, indent=2), encoding='utf-8',
+    )
+    IRI_REF_TESTS_OUT.write_text(
+        json.dumps(iri_ref_tests_out, indent=2), encoding='utf-8',
+    )
 
 if __name__ == '__main__':
     main()
