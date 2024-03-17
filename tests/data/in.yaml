@@ -1,34 +1,101 @@
 rfc3986:
-- "s://u:w@a.b:1/p/o?q=r&s=t&q=z#f"
-- "s:///?#"
+  full:
+  - "ftp://ftp.is.co.za/rfc/rfc1808.txt"
+  - "http://www.ietf.org/rfc/rfc2396.txt"
+  - "ldap://[2001:db8::7]/c=GB?objectClass?one"
+  - "mailto:John.Doe@example.com"
+  - "news:comp.infosystems.www.servers.unix"
+  - "tel:+1-816-555-1212"
+  - "telnet://192.0.2.16:80/"
+  - "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
+  - "foo://example.com:8042/over/there?name=ferret#nose"
+  - "urn:example:animal:ferret:nose"
+  relative:
+    base: "http://a/b/c/d;p?q"
+    refs:
+    - rel: "g:h"
+      full: "g:h"
+    - rel: "g"
+      full: "http://a/b/c/g"
+    - rel: "./g"
+      full: "http://a/b/c/g"
+    - rel: "g/"
+      full: "http://a/b/c/g/"
+    - rel: "/g"
+      full: "http://a/g"
+    - rel: "//g"
+      full: "http://g"
+    - rel: "?y"
+      full: "http://a/b/c/d;p?y"
+    - rel: "g?y"
+      full: "http://a/b/c/g?y"
+    - rel: "#s"
+      full: "http://a/b/c/d;p?q#s"
+    - rel: "g#s"
+      full: "http://a/b/c/g#s"
+    - rel: "g?y#s"
+      full: "http://a/b/c/g?y#s"
+    - rel: ";x"
+      full: "http://a/b/c/;x"
+    - rel: "g;x"
+      full: "http://a/b/c/g;x"
+    - rel: "g;x?y#s"
+      full: "http://a/b/c/g;x?y#s"
+    - rel: ""
+      full: "http://a/b/c/d;p?q"
+    - rel: "."
+      full: "http://a/b/c/"
+    - rel: "./"
+      full: "http://a/b/c/"
+    - rel: ".."
+      full: "http://a/b/"
+    - rel: "../"
+      full: "http://a/b/"
+    - rel: "../g"
+      full: "http://a/b/g"
+    - rel: "../.."
+      full: "http://a/"
+    - rel: "../../"
+      full: "http://a/"
+    - rel: "../../g"
+      full: "http://a/g"
+
+
+generic:
+  full:
+  - "s://u:w@a.b:1/p/o?q=r&s=t&q=z#f"
+
+empty:
+  full:
+  - "s:///?#"
 
 rfc3987:
-# CJK
-- "https://www.例如.中国/api/中国/endpoint?例=如#如"
-# Bi-directional
-# https://www.w3.org/International/iri-edit/BidiExamples
-- "http://ab.גדהוזח.ij/kl/mn/op.html"
-- "http://ab.تثجحخد.ij/kl/mn/op.html"
-- "http://ab.تثج.حخد/ij/kl/mn/op.html"
-- "http://ab.גדה.וזח/ij/kl/mn/op.html"
-- "http://אב.גד.הו/זח/טי/כל?מן=סע;פץ=קר#שת"
-- "http://اب.تث.جح/خد/ذر/زس?شص=ضط;ظع=غف#قك"
-- "http://اب.تث.ef/gh/ذر/زس.html"
-- "http://אב.גד.ef/gh/טי/כל.html"
-- "http://ab.cd.הו/זח/ij/kl.html"
-- "http://ab.cd.جح/خد/ij/kl.html"
-- "http://ab.تث.جح/خد/ذر/kl.html"
-- "http://ab.גד.הו/זח/טי/kl.html"
-- "http://ab.גדה123וזח.ij/kl/mn/op.html"
-- "http://ab.تثج123حخد.ij/kl/mn/op.html"
-# Allowed but not recommended!
-- "http://ab.تثجحخد.123/kl/mn/op.html"
-- "http://ab.גדהוזח.123/kl/mn/op.html"
-- "http://ab.גדהוזח.123ij/kl/mn/op.html"
-- "http://ab.تثجحخد.123ij/kl/mn/op.html"
+  full:
+  # CJK
+  - "https://www.例如.中国/api/中国/endpoint?例=如#如"
+  # Bi-directional
+  # https://www.w3.org/International/iri-edit/BidiExamples
+  - "http://ab.גדהוזח.ij/kl/mn/op.html"
+  - "http://ab.تثجحخد.ij/kl/mn/op.html"
+  - "http://ab.تثج.حخد/ij/kl/mn/op.html"
+  - "http://ab.גדה.וזח/ij/kl/mn/op.html"
+  - "http://אב.גד.הו/זח/טי/כל?מן=סע;פץ=קר#שת"
+  - "http://اب.تث.جح/خد/ذر/زس?شص=ضط;ظع=غف#قك"
+  - "http://اب.تث.ef/gh/ذر/زس.html"
+  - "http://אב.גד.ef/gh/טי/כל.html"
+  - "http://ab.cd.הו/זח/ij/kl.html"
+  - "http://ab.cd.جح/خد/ij/kl.html"
+  - "http://ab.تث.جح/خد/ذر/kl.html"
+  - "http://ab.גד.הו/זח/טי/kl.html"
+  - "http://ab.גדה123וזח.ij/kl/mn/op.html"
+  - "http://ab.تثج123حخد.ij/kl/mn/op.html"
+  # Allowed but not recommended!
+  - "http://ab.تثجحخد.123/kl/mn/op.html"
+  - "http://ab.גדהוזח.123/kl/mn/op.html"
+  - "http://ab.גדהוזח.123ij/kl/mn/op.html"
+  - "http://ab.تثجحخد.123ij/kl/mn/op.html"
 
-errors:
-  rfc3987:
+  errors:
   # https://www.w3.org/International/iri-edit/BidiExamples
   - "http://ab.cd.ef/خد1/2ذر/زس.html"
   - "http://ab.cd.ef/זח1/2טי/כל.html"
@@ -36,54 +103,305 @@ errors:
   - "http://ab.cd.ef/خد%31/%32ذر/زس.html"
 
 rfc2397:
-- "data:,A%20brief%20note"
-- "data:image/gif;base64,R0lGODdhMAAwAPAAAAAAAP///ywAAAAAMAAwAAAC8IyPqcvt3wCcDkiLc7C0qwyGHhSWpjQu5yqmCYsapyuvUUlvONmOZtfzgFzByTB10QgxOR0TqBQejhRNzOfkVJ+5YiUqrXF5Y5lKh/DeuNcP5yLWGsEbtLiOSpa/TPg7JpJHxyendzWTBfX0cxOnKPjgBzi4diinWGdkF8kjdfnycQZXZeYGejmJlZeGl9i2icVqaNVailT6F5iJ90m6mvuTS4OK05M0vDk0Q4XUtwvKOzrcd3iq9uisF81M1OIcR7lEewwcLp7tuNNkM3uNna3F2JQFo97Vriy/Xl4/f1cf5VWzXyym7PHhhx4dbgYKAAA7"
-- "data:application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local"
+  full:
+  - "data:,A%20brief%20note"
+  - "data:image/gif;base64,R0lGODdhMAAwAPAAAAAAAP///ywAAAAAMAAwAAAC8IyPqcvt3wCcDkiLc7C0qwyGHhSWpjQu5yqmCYsapyuvUUlvONmOZtfzgFzByTB10QgxOR0TqBQejhRNzOfkVJ+5YiUqrXF5Y5lKh/DeuNcP5yLWGsEbtLiOSpa/TPg7JpJHxyendzWTBfX0cxOnKPjgBzi4diinWGdkF8kjdfnycQZXZeYGejmJlZeGl9i2icVqaNVailT6F5iJ90m6mvuTS4OK05M0vDk0Q4XUtwvKOzrcd3iq9uisF81M1OIcR7lEewwcLp7tuNNkM3uNna3F2JQFo97Vriy/Xl4/f1cf5VWzXyym7PHhhx4dbgYKAAA7"
+  - "data:text/plain;charset=iso-8859-7,%be%fg%be"
+  - "data:application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local"
 
 rfc4151:
-- "tag:handrews@modern-json-schema.com,2023-01-01:test"
-- "tag:example.com,2023:/foo/bar?a=b&y=z#qux"
+  full:
+  - "tag:timothy@hpl.hp.com,2001:web/externalHome"
+  - "tag:sandro@w3.org,2004-05:Sandro"
+  - "tag:my-ids.com,2001-09-15:TimKindberg:presentations:UBath2004-05-19"
+  - "tag:blogger.com,1999:blog-555"
+  - "tag:yaml.org,2002:int"
+  # Extra example with query as none was provided by the RFC
+  - "tag:example.com,2023:/foo/bar?a=b&y=z#qux"
 
-rfc4993:
-- "iris.lwz:dreg1//192.0.2.1:44/domain/example.com"
+rfc3981:
+  # Note that the URI scheme iris.lwz is registered in RFC 4993,
+  # but that RFC does not include examples.
+  full:
+  - "iris:dreg1//example.com/domain/example.com"
+  - "iris:dreg1//example.com"
+  - "iris:dreg1//com/domain/example.com"
+  - "iris:dreg1//192.0.2.1:44/domain/example.com"
+  - "iris.lwz:dreg1//192.0.2.1:44/domain/example.com"
+  - "iris.beep:dreg1//com/domain/example.com"
+  - "iris:dreg1/bottom/example.com/domain/example.com"
+  - "iris.beep:dreg1/bottom/example.com/domain/example.com"
+
+rfc5724:
+  full:
+  - "sms:+15105550101"
+  - "sms:+15105550101,+15105550102"
+  - "sms:+15105550101?body=hello%20there"
+
+rfc5758:
+  full:
+  # No proper examples in RFC
+  - "rsync://user@host.net:873/Source"
+
+rfc5870:
+  full:
+  - "geo:13.4125,103.8667"
+  - "geo:48.2010,16.3695,183"
+  - "geo:48.198634,16.371648;crs=wgs84;u=40"
+  equivalences:
+  # There are some "undefined" examples as well, not sure what to do with those.
+  - - "geo:90,-22.43;crs=WGS84"
+    - "geo:90,4"
+  - - "geo:22.300;-118.4"
+    - "geo:22.3;-118.4400"
+  - - "geo:66,30;u=6.500;FOo=this%2dthat"
+    - "geo:66.0,30;u=6.5;foo=this-that"
+  - - "geo:47,11;foo=blue;bar=white"
+    - "geo:47,11;bar=white;foo=blue"
+  errors:
+  # Invalid location
+  - "geo:94,0"
+
+
+rfc6068:
+  full:
+  - "mailto:chris@example.com"
+  - "mailto:infobot@example.com?subject=current-issue"
+  - "mailto:infobot@example.com?body=send%20current-issue"
+  - "mailto:infobot@example.com?body=send%20current-issue%0D%0Asend%20index"
+  - "mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E"
+  - "mailto:majordomo@example.com?body=subscribe%20bamboo-l"
+  - "mailto:joe@example.com?cc=bob@example.com&body=hello"
+  - "mailto:gorby%25kremvax@example.com"
+  - "mailto:unlikely%3Faddress@example.com?blat=foop"
+  - "mailto:joe@an.example?cc=bob@an.example&amp;body=hello"
+  - "mailto:Mike%26family@example.org"
+  - "mailto:%22not%40me%22@example.org"
+  - "mailto:%22oh%5C%5Cno%22@example.org"
+  - "mailto:%22%5C%5C%5C%22it's%5C%20ugly%5C%5C%5C%22%22@example.org"
+  # UTF-8 encoding, using the é in café
+  - "mailto:user@example.org?subject=caf%C3%A9"
+  - "mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D"
+  - "mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D"
+  - "mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9"
+  #    The following example uses the Japanese word "natto" (Unicode
+  #    characters U+7D0D U+8C46) as a domain name label, sending a mail to a
+  #    user at "natto".example.org
+  #
+  #    When constructing the email, the domain name label is converted to
+  #    punycode.  The resulting message may look as follows:
+  # 
+  #       From: sender@example.net
+  #       To: user@xn--99zt52a.example.org
+  #       Subject: Test
+  #       Content-Type: text/plain
+  #       Content-Transfer-Encoding: 7bit
+  # 
+  #       NATTO
+  - "mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO"
+  errors:
+  - "mailto:joe@example.com?cc=bob@example.com?body=hello"
+  equivalences:
+  - - "mailto:addr1@an.example,addr2@an.example"
+    - "mailto:?to=addr1@an.example,addr2@an.example"
+    # Not recommended
+    - "mailto:addr1@an.example?to=addr2@an.example"
+
+rfc6270:
+  full:
+  - "tn3270://userinfo@host.net/"
+  - "tn3270://userinfo@host.net"
+
+rfc6167:
+  full:
+  - "jms:jndi:SomeJndiNameForDestination?jndiInitialContextFactory=com.example.jndi.JndiFactory&priority=3"
+  - "jms:queue:ExampleQueueName?timeToLive=1000"
+  - "jms:jndi:REQ_QUEUE?jndiURL=file:/C:/JMSAdmin&jndiInitialContextFactory=com.sun.jndi.fscontext.RefFSContextFactory&jndiConnectionFactoryName=CONNFACT&replyToName=RESP_QUEUE"
+  - "jms:jndi:REQ_QUEUE?jndiURL=file:/C:/JMSAdmin&jndiInitialContextFactory=com.sun.jndi.fscontext.RefFSContextFactory&jndiConnectionFactoryName=CONNFACT&jndi-com.example.jndi.someParameter=someValue"
+  - "jms:queue:ExampleQueueName"
+  - "jms:topic:ExampleTopicName"
+
+rfc6455:
+  full:
+  - "ws://example.com/chat"
+
+rfc7472:
+  full:
+  - "ipps://example.com/"
+  - "ipps://example.com/ipp"
+  - "ipps://example.com/ipp/faxout"
+  - "ipps://example.com/ipp/print"
+  - "ipps://example.com/ipp/scan"
+  - "ipps://example.com/ipp/print/bob"
+  - "ipps://example.com/ipp/print/ira"
+  equivalences:
+  - - "ipps://example.com/"
+    - "ipps://example.com/ipp/print"
+    - "ipps://example.com:631/ipp/print"
+
+rfc7512:
+  full:
+  - "pkcs11:"
+  - "pkcs11:object=my-pubkey;type=public"`
+  - "pkcs11:object=my-key;type=private?pin-source=file:/etc/token"
+  - "pkcs11:token=The%20Software%20PKCS%2311%20Softtoken;manufacturer=Snake%20Oil,%20Inc.;model=1.0;object=my-certificate;type=cert;id=%69%95%3E%5C%F4%BD%EC%91;serial=?pin-source=file:/etc/token_pin"
+  - "pkcs11:object=my-sign-key;type=private?module-name=mypkcs11"
+  - "pkcs11:object=my-sign-key;type=private?module-path=/mnt/libmypkcs11.so.1"
+  - "pkcs11:token=Software%20PKCS%2311%20softtoken;manufacturer=Snake%20Oil,%20Inc.?pin-value=the-pin"
+  - "pkcs11:slot-description=Sun%20Metaslot"
+  - "pkcs11:library-manufacturer=Snake%20Oil,%20Inc.;library-description=Soft%20Token%20Library;library-version=1.23"
+  - "pkcs11:token=My%20token%25%20created%20by%20Joe;library-version=3;id=%01%02%03%Ba%dd%Ca%fe%04%05%06"
+  - "pkcs11:token=A%20name%20with%20a%20substring%20%25%3B;object=my-certificate;type=cert"
+  - "pkcs11:token=Name%20with%20a%20small%20A%20with%20acute:%20%C3%A1;object=my-certificate;type=cert"
+  - "pkcs11:token=my-token;object=my-certificate;type=cert;vendor-aaa=value-a?pin-source=file:/etc/token_pin&vendor-bbb=value-b"
+
+
+rfc7565:
+  full:
+  - "acct:bob@example.com"
+  - "acct:juliet%40capulet.example@shoppingsite.example"
+
+rfc7595:
+  full:
+  - "example:foo"
+  - "example:/foo"
+  - "example://foo"
+
+rfc7869:
+  full:
+  - "vnc://10.0.0.1:5901?VncPassword=secret&SecurityType=2"
+  - "vnc://?com.dell.vncclient.ScreenMode=2&"
+  - "vnc://localhost:5900?ConnectionName=Server&SecurityType=2&IdHash=0D:3A:72:08:57:EA:4D:30&SaveConnection=false&"
 
 rfc6694:
-- "about:blank"
-- "about:?xyz#abc"
+  full:
+  - "about:blank"
+  # Extra test case for un-exercised parts of the grammar
+  - "about:?xyz#abc"
 
 rfc8141:
-- "urn:ns:ss?+a:b=c?=d=e&f=g#f"
-- "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
-- "urn:example:a123,Z456#somepart"
-- "urn:example:1/406/47452/2"
-- "urn:example:foo-bar-baz-qux?+CCResolve:cc=uk"
-- "urn:example:weather?=op=map&lat=39.56&lon=-104.85&datetime=1969-07-21T02:56:15Z"
+  full:
+  - "urn:example:foo-bar-baz-qux?+CCResolve:cc=uk"
+  - "urn:example:weather?=op=map&lat=39.56&lon=-104.85&datetime=1969-07-21T02:56:15Z"
+  - "urn:example:foo-bar-baz-qux#somepart"
+  - "urn:example:apple:pear:plum:cherry"
+  # Extra test cases of unknown provenance
+  - "urn:ns:ss?+a:b=c?=d=e&f=g#f"
+  - "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+  - "urn:example:a123,Z456#somepart"
+  - "urn:example:1/406/47452/2"
+  equivalences:
+  - - "urn:example:a123,z456"
+    - "URN:example:a123,z456"
+    - "urn:EXAMPLE:a123,z456"
+    - "urn:example:a123,z456?+abc"
+    - "urn:example:a123,z456?=xyz"
+    - "urn:example:a123,z456#789"
+  - - "urn:example:a123%2Cz456"
+    - "URN:EXAMPLE:a123%2cz456"
+  non-equivalences:
+  - - "urn:example:a123,z456"
+    - "urn:example:a123,z456/foo"
+    - "urn:example:a123,z456/bar"
+    - "urn:example:a123,z456/baz"
+    - "urn:example:a123%2Cz456"
+    - "urn:example:A123,z456"
+    - "urn:example:A123,z456"
+    - "urn:example:%D0%B0123,z456"
+
 
 rfc8089:
-- "file:///foo"
-- "file:/foo"
+  full:
+  - "file:///path/to/file"
+  - "file:/path/to/file"
+  - "file://host.example.com/path/to/file"
+  - "file:///c:/path/to/file"
+  # Translation of "\\host.example.com\Share\path\to\file.txt"
+  - "file://host.example.com/Share/path/to/file.txt"
+  equivalences:
+  - - "file:///foo"
+    - "file:/foo"
+    - "file://localhost/foo"
+  nonstandard:
+  # These require substituted ABNF rules
+  # There are also nonstandard relative ref resolution examples
+  - "file:c:/path/to/file"
+  - "file:///c|/path/to/file"
+  - "file:/c|/path/to/file"
+  - "file:c|/path/to/file"
+  - "file:////host.example.com/path/to/file"
+  - "file://///host.example.com/path/to/file"
+
+rfc8119:
+  # Maybe should be RFC 4458, just adds cause=380?
+  full:
+  - "sip:+15555551002@atlanta.com;cause=380;user=phone"
+  - "sip:+15551001@example.com;user=phone"
 
 rfc8589:
-- "leaptofrogans:%E7%BD%91%E7%BB%9C%E5%90%8D*%E7%AB%99%E5%90%8D"
-- "leaptofrogans:网络名*站名"
+  full:
+  - "leaptofrogans:Network-Name*Site-Name"
+  - "leaptofrogans:%E7%BD%91%E7%BB%9C%E5%90%8D*%E7%AB%99%E5%90%8D"
+  # IRI form of previous example
+  - "leaptofrogans:网络名*站名"
+
+rfc8905:
+  full:
+  - "payto://iban/DE75512108001245126199?amount=EUR:200.0&message=hello"
+  - "payto://ach/122000661/1234"
+  - "payto://bic/SOGEDEFFXXX"
+  - "payto://iban/DE75512108001245126199"
+  - "payto://iban/SOGEDEFFXXX/DE75512108001245126199"
+  - "payto://upi/alice@example.com?receiver-name=Alice&amount=INR:200"
+  - "payto://bitcoin/12A1MyfXbW6RhdRAZEqofac5jCQQjwEPBu"
+  - "payto://ilp/g.acme.bob"
+  - "payto://void/?amount=EUR:10.5"
+  errors:
+  - "payto:iban/12345"
+
+rfc8959:
+  full:
+  - "secret-token:E92FB7EB-D882-47A4-A265-A0B6135DC842%20foo"
 
 rfc9110:
-- "https://weatherapp.example?op=map&lat=39.56&lon=-104.85&datetime=1969-07-21T02:56:15Z"
+  full:
+  # Lots of usage, few examples, probably best to get http(s) cases elsewhere
+  - "http://example.com/a.html,foo"
+  - "http://www.example.org/~tim"
+  # Not sure where this came from
+  - "https://weatherapp.example?op=map&lat=39.56&lon=-104.85&datetime=1969-07-21T02:56:15Z"
+  equivalences:
+  - - "http://example.com:80/~smith/home.html"
+    - "http://EXAMPLE.com/%7Esmith/home.html"
+    - "http://EXAMPLE.com:/%7esmith/home.html"
+  normalizations:
+  - normal: "https://example.com:443/happy.js"
+    alternate:
+    - "https://Example.Com/happy.js"
+
+rfc9278:
+  full:
+  - "urn:ietf:params:oauth:jwk-thumbprint:sha-256:NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs"
+
 
 # See also https://html.spec.whatwg.org/#evaluate-a-javascript:-url
 # but, as a WHATWG spec, it does not define the syntax directly.
 draft-hoehrmann-javascript-scheme:
-- "javascript:doSomething()"
+  full:
+  - "javascript:doSomething()"
 
 # https://magnet-uri.sourceforge.net/
 magnet:
-- "magnet:?xt=urn:btih:c12fe1c06bba254a9dc9f519b335aa7c1367a88a&tr=http%3A%2F%2Fexample.org%2Fannounce"
+  full:
+  - "magnet:?xt=urn:btih:c12fe1c06bba254a9dc9f519b335aa7c1367a88a&tr=http%3A%2F%2Fexample.org%2Fannounce"
 
 # https://learn.microsoft.com/en-us/windows/uwp/launch-resume/launch-maps-app
 microsoft-maps:
-- "bingmaps:?bb=39.719_-74.52~41.71_-73.5&cp=47~-122"
-- "ms-drive-to:?destination.latitude=47.680504&destination.longitude=-122.328262&destination.name=Green+Lake"
+  full:
+  - "bingmaps:?bb=39.719_-74.52~41.71_-73.5&cp=47~-122"
+  - "ms-drive-to:?destination.latitude=47.680504&destination.longitude=-122.328262&destination.name=Green+Lake"
 
 obsidian:
-- "obsidian://open?vault=my%20vault"
-- "obsidian://vault/my%20vault/my%20note"
+  full:
+  - "obsidian://open?vault=my%20vault"
+  - "obsidian://vault/my%20vault/my%20note"
